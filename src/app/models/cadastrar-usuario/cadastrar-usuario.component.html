@@ -1,0 +1,68 @@
+
+<div class="container-fluid">
+    <div class="form-field">
+        <div class="subtitulo">
+            <p>Login:</p>
+            <div class="obrigatorio">*</div>
+        </div>
+        <mat-form-field class="input-field">
+            <input type="text" class="input" matInput placeholder="login ex: amanda@softhomeliving.com" [(ngModel)]="usuario.login">
+        </mat-form-field>
+    </div>
+
+    <div class="form-field">
+        <div class="subtitulo">
+            <p>Senha:</p>
+            <div class="obrigatorio">*</div>
+        </div>
+        <mat-form-field class="input-field">
+            <input type="password" class="input" matInput placeholder="Senha" [(ngModel)]="usuario.password">
+        </mat-form-field>
+    </div>
+
+    <div class="form-field"> 
+        <div class="subtitulo">
+            <p>Permissão:</p>
+            <div class="obrigatorio">*</div>
+        </div>
+        <mat-select placeholder="Permissões de acesso" class="input-option" [(ngModel)]="usuario.role">
+            <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+        </mat-select>
+    </div>
+    
+    <div class="form-field">
+        <div class="subtitulo">
+            <p>Nome:</p>
+            <div class="obrigatorio">*</div>
+        </div>
+        <mat-form-field class="input-field">
+            <input type="text"  class="input" matInput placeholder="Nome" [(ngModel)]="residente.nome">
+        </mat-form-field>
+    </div>
+
+    <div class="form-field">
+        <div class="subtitulo">
+            <p>Sobrenome:</p>
+            <div class="obrigatorio">*</div>
+        </div>
+        <mat-form-field class="input-field">
+            <input type="text" class="input" matInput placeholder="Sobrenome" [(ngModel)]="residente.sobrenome">
+        </mat-form-field>
+    </div>
+    
+    <div class="form-field"> 
+        <div class="subtitulo">
+            <p>Unidade:</p>
+            <div class="obrigatorio">*</div>
+        </div>
+        <mat-select placeholder="Residencia" class="input-option" [(ngModel)]="residente.residencias[0].id">
+            <mat-option *ngFor="let residencia of data" [value]="residencia.id"> Residencia: {{ residencia.unidade }}</mat-option>
+        </mat-select>
+    </div>
+
+    <div class="group-buttons">
+        <button ngClass="btn btn-sm btn-dark" (click)="cancelar()">Cancelar</button>
+        <button ngClass="btn btn-sm btn-success" (click)="cadastrarConta(usuario, residente)">Criar</button>
+    </div>
+
+</div>

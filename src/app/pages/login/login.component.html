@@ -14,7 +14,7 @@
     <div class="img-container">
       <img class="img-fluid" src="../../assets/logo.png" alt="Logo">
     </div>
-    <button ngClass="btn btn-lg btn-success" *ngFor="let button of optionsButton">{{ button }}</button>
+    <button ngClass="btn btn-lg btn-success" *ngFor="let button of optionsButton" (click)="visitorList(button)"> {{ button }}</button>
   </div>
 
 </div>

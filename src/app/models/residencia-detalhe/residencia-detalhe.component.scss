@@ -1,0 +1,62 @@
+.container-fluid {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    background-color: transparent;
+    overflow-y: scroll;
+  }
+  
+  .form-field {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    .subtitulo {
+        display: flex;
+        flex-direction: row;
+
+        .obrigatorio {
+            color: red;
+            display: flex; 
+            margin-left: 5px;
+        }
+    }
+
+    .input-field {
+        width: 100%;
+        gap: 1;
+        display: flex; 
+    } 
+  }
+  
+  .input-option {
+    padding: 15px;
+    border-bottom: 0.5px solid black;
+    margin-bottom: 15px;
+  }
+  
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .btn {
+    display: flex;
+    margin: 5px;
+  }
+  
+  .field2 {
+    margin-left: 5px ;
+    width: auto;
+  }
+  
+  .field {
+    margin-left: 12px ;
+    width: auto;
+  }
+
+  .group-buttons {
+    justify-content: flex-end;
+    width: 100%;
+    display: flex;
+  }

@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="form-field">
+        <div class="subtitulo">
+            <p>Nome do Condominio:</p>
+            <div class="obrigatorio">*</div>
+        </div>
+        <mat-form-field class="form-field">
+            <input type="text" class="input" matInput placeholder="Nome" [(ngModel)]="condominio.nome" required>
+        </mat-form-field>
+    </div>
+    
+    <div class="form-field">
+        <div class="subtitulo">
+            <p>Endereço:</p>
+            <div class="obrigatorio">*</div>
+        </div>
+        <mat-form-field class="form-field">
+            <input type="text" class="input" matInput placeholder="Ex: Rua: 13 de Maio, Centro João Pessoa - PB" [(ngModel)]="condominio.endereco" required>
+        </mat-form-field>
+    </div>
+    
+    <div class="form-field">
+        <div class="field">Sobre</div>
+        <mat-form-field class="form-field">
+            <input type="text" class="input" matInput placeholder="Ex: Entregando um novo jeito de viver, e viver bem!" [(ngModel)]="condominio.sobre">
+        </mat-form-field>
+    </div>   
+    
+    <div mat-dialog-actions ngClass="group-buttons">
+        <button ngClass="btn btn-sm btn-danger" (click)="cancelar()">Cancelar</button>
+        <button ngClass="btn btn-sm btn-success" (click)="criarCondominio(condominio)">Salvar</button>
+    </div>
+</div>
+    
+
+  
+

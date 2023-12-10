@@ -1,0 +1,110 @@
+<div class="options">
+    <button ngClass="btn btn-default myButton" (click)="sair()">  Sair</button>  
+</div>
+<div class="container-fluid">
+    <div class="title">
+        <h2>{{ titleName }}</h2>
+        <div class="button-group">
+            <button ngClass="btn btn-dark mrg-left-5" mat-raised-button (click)="changeTable()">{{ buttonName }}</button>
+            <button ngClass="btn btn-success mrg-left-5" mat-raised-button (click)="cadastrarResidencia()">Cadastrar Residência</button>
+            <button ngClass="btn btn-success mrg-left-5" mat-raised-button (click)="cadastrarUsuario()">Cadastrar Usuário</button>
+        </div>
+    </div>
+    <!-- TABELA DE VISITANTES -->
+    <div class="card-container" *ngIf="titleName === 'Visitantes'">
+        <mat-form-field>
+            <mat-label>Filtrar</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        </mat-form-field>
+        <div class="table-container">
+            <table mat-table [dataSource]="dataVisitantes" ngClass="mat-elevation-z8">
+                <ng-container matColumnDef="unidade">
+                    <th mat-header-cell *matHeaderCellDef class="column"> Unidade </th>
+                    <td mat-cell *matCellDef="let element" class="column"> {{ element.unidade }} </td>
+                </ng-container>
+    
+                <!-- Nome Column -->
+                <ng-container matColumnDef="nome">
+                    <th mat-header-cell *matHeaderCellDef class="column"> Nome </th>
+                    <td mat-cell *matCellDef="let element" class="column"> {{ element.nome }} </td>
+                </ng-container>
+    
+                <!-- Data de Chegada Column -->
+                <ng-container matColumnDef="chegada">
+                    <th mat-header-cell *matHeaderCellDef class="column"> Data de Chegada </th>
+                    <td mat-cell *matCellDef="let element" class="column"> {{ element.dataChegadaFormatada }} </td>
+                </ng-container>
+    
+                <!-- Acesso Column -->
+                <ng-container matColumnDef="entrada">
+                    <th mat-header-cell *matHeaderCellDef class="column"> Entrada </th>
+                    <td mat-cell *matCellDef="let element" class="column"> {{element.entrada}} </td>
+                </ng-container>
+                
+                <!-- Remover Column -->
+                <ng-container matColumnDef="remover">
+                    <th mat-header-cell *matHeaderCellDef class="column"> Remover </th>
+                    <td mat-cell *matCellDef="let element" ngClass="column"> 
+                        <button ngClass="btn btn-sm btn-default" (click)="deleteVisitante(element.id)">Remover</button>
+                    </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="card-container" *ngIf="titleName === 'Residentes'">
+        <mat-form-field>
+            <mat-label>Filtrar</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        </mat-form-field>
+        <div class="table-container">
+            <table mat-table [dataSource]="dataResidentes" ngClass="mat-elevation-z8">
+                <ng-container matColumnDef="unidade">
+                    <th mat-header-cell *matHeaderCellDef class="column"> Unidade </th>
+                    <td mat-cell *matCellDef="let element" class="column"> {{ element.unidade }} </td>
+                </ng-container>
+    
+                <!-- Name Column -->
+                <ng-container matColumnDef="nome">
+                    <th mat-header-cell *matHeaderCellDef class="column"> Nome </th>
+                    <td mat-cell *matCellDef="let element" class="column"> {{ element.nomeCompleto }} </td>
+                </ng-container>
+    
+                <!-- Weight Column -->
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef class="column"> Email </th>
+                    <td mat-cell *matCellDef="let element" class="column"> {{ element.email }} </td>
+                </ng-container>
+    
+                <!-- Weight Column -->
+                <ng-container matColumnDef="acesso">
+                    <th mat-header-cell *matHeaderCellDef class="column"> Acesso </th>
+                    <td mat-cell *matCellDef="let element" class="column"> {{ element.role }} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="remover">
+                    <th mat-header-cell *matHeaderCellDef class="column"> Remover </th>
+                    <td mat-cell *matCellDef="let element" ngClass="column"> 
+                        <button ngClass="btn btn-sm btn default" (click)="apagarUsuario(element)">Remover</button>
+                    </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="residenteColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: residenteColumns;"></tr>
+    
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+           
+</div>
+

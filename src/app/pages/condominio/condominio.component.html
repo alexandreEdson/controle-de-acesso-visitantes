@@ -1,0 +1,52 @@
+<div class="options">
+    <button ngClass="btn btn-default myButton" (click)="sair()">Sair</button>  
+</div>
+<div class="container-fluid">    
+    <div class="card-container">
+        
+        <div class="title">
+            <h2>Visitantes</h2>
+            <button ngClass="btn btn-success" mat-raised-button (click)="abrirCondominioModal()">Adicionar Condominio</button>
+        </div>
+        <mat-form-field>
+            <mat-label>Filtrar</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        </mat-form-field>
+        <div class="table-container">
+            <table mat-table [dataSource]="dataSource" ngClass="mat-elevation-z8">
+                <ng-container matColumnDef="nome">
+                    <th mat-header-cell *matHeaderCellDef class="column"> Nome </th>
+                    <td mat-cell *matCellDef="let element" class="column"> {{ element.nome }} </td>
+                </ng-container>
+    
+                <!-- Endereco Column -->
+                <ng-container matColumnDef="endereco">
+                    <th mat-header-cell *matHeaderCellDef class="column"> Endereço </th>
+                    <td mat-cell *matCellDef="let element" class="column"> {{ element.endereco }} </td>
+                </ng-container>
+    
+                <!-- Sobre Column -->
+                <ng-container matColumnDef="sobre">
+                    <th mat-header-cell *matHeaderCellDef class="column"> Sobre </th>
+                    <td mat-cell *matCellDef="let element" class="column"> {{ element.sobre }} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="remover">
+                    <th mat-header-cell *matHeaderCellDef class="column"> Remover </th>
+                    <td mat-cell *matCellDef="let element" ngClass="column"> 
+                        <button ngClass="btn btn-sm btn-default" (click)="apagarCondominio(element)">Remover</button>
+                    </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+                <tr class="mat-row" *matNoDataRow>
+                    <td ngClass="mat-cell no-filter" colspan="4" >Você ainda não tem condominios cadastrados! {{input.value}}</td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>    
+</div>
+
